@@ -1,204 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <!-- Pastikan link ke css/style.css benar -->
-    <link rel="stylesheet" href="css/style.css" />
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasa - Tazkia</title>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Style Khusus Halaman Jasa (Bisa juga dipindahkan ke style.css jika mau) -->
     <style>
-      .services {
-        padding: 10rem 9% 5rem;
-        min-height: 100vh;
-      }
-
-      .services h1 {
-        font-size: 4rem;
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .services span {
-        color: #e3651d;
-      }
-
-      /* Grid Container untuk Katalog */
-      .catalog-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      /* Desain Kartu Produk */
-      .service-card {
-        background-color: #252525; /* Warna sedikit terang dari background */
-        border-radius: 2rem;
-        overflow: hidden;
-        border: 1px solid #333;
-        transition: 0.3s ease;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        border-color: #e3651d;
-        box-shadow: 0 0 15px rgba(227, 101, 29, 0.3);
-      }
-
-      .service-image img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-
-      .service-content {
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-      }
-
-      .service-content h3 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .service-content .price {
-        color: #e3651d;
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .service-content p {
-        font-size: 1.4rem;
-        color: #ccc;
-        margin-bottom: 2rem;
-        line-height: 1.6;
-        flex-grow: 1; /* Agar tombol selalu di bawah */
-      }
-
-      /* Tombol Pesan WA */
-      .btn-wa {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: #25D366; /* Warna Hijau WA */
-        color: white;
-        text-align: center;
-        border-radius: 2rem;
-        font-size: 1.6rem;
-        font-weight: 600;
-        transition: 0.3s ease;
-        text-decoration: none;
-        border: 2px solid #25D366;
-      }
-
-      .btn-wa:hover {
-        background-color: transparent;
-        color: #25D366;
-        transform: scale(1.05);
-      }
-
-      /* Responsive Mobile */
-      @media (max-width: 995px) {
-        .services h1 {
-          font-size: 3rem;
+        /* --- 1. RESET & VARIABEL --- */
+        :root {
+            --primary-color: #e3651d; /* Warna Oranye Tazkia */
+            --bg-color: #121212;
+            --text-color: #fff;
+            --nav-bg: rgba(18, 18, 18, 0.95); /* Background agak transparan */
         }
-      }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* --- 2. STYLING NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 9%;
+            background-color: var(--nav-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            /* Efek Kaca (Glassmorphism) */
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        /* Navigasi Desktop */
+        .navbar {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            font-size: 1.7rem;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary-color);
+        }
+
+        /* Garis Bawah Animasi saat Hover/Active */
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: 0.3s ease;
+        }
+
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+
+        /* Menu Toggle (Hamburger Icon) untuk Mobile */
+        #menu-icon {
+            font-size: 2.8rem;
+            color: var(--text-color);
+            display: none; /* Sembunyikan di Desktop */
+            cursor: pointer;
+        }
+
+        /* --- 3. RESPONSIVE MEDIA QUERY (Mobile) --- */
+        @media (max-width: 991px) {
+            header {
+                padding: 1.2rem 4%;
+            }
+
+            #menu-icon {
+                display: block; /* Tampilkan ikon burger di HP */
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 4%;
+                background-color: var(--bg-color); /* Background solid saat menu turun */
+                border-top: 1px solid rgba(255,255,255,0.1);
+                
+                /* Sembunyikan menu secara default */
+                display: none; 
+                flex-direction: column;
+                gap: 1.5rem;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+            }
+
+            /* Class 'active' akan ditambahkan via JavaScript */
+            .navbar.active {
+                display: flex;
+            }
+        }
+
+        /* --- Contoh Konten agar Navbar terlihat efek sticky-nya --- */
+        .dummy-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #555;
+        }
     </style>
-  </head>
-  <body>
-    <!-- HEADER SAMA SEPERTI HALAMAN LAIN -->
-    <header>
-      <a href="#" class="logo">Tazkia</a>
-      <div class="menu-toggle" id="mobile-menu">
-        <i class="fa fa-bars"></i>
-      </div>
-      <!-- Class active ada di Jasa -->
-      <nav id="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="skill.html">Skill</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="jasa.html" class="active">Jasa</a>
-      </nav>
+</head>
+<body>
+
+    <!-- NAVBAR START -->
+    <header class="header">
+        <a href="#" class="logo">Tazkia<span>.</span></a>
+
+        <i class="fas fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="skill.html">Skill</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <!-- Class 'active' menandakan halaman ini sedang dibuka -->
+            <a href="jasa.html" class="active">Jasa</a>
+        </nav>
     </header>
+    <!-- NAVBAR END -->
 
-    <!-- SECTION KATALOG JASA -->
-    <section class="services">
-      <h1>My <span>Services</span></h1>
-      
-      <div class="catalog-container">
-        
-        <!-- Item 1: Edit Video -->
-        <div class="service-card">
-          <div class="service-image">
-            <!-- Ganti src dengan link foto asli Anda -->
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Edit Video">
-          </div>
-          <div class="service-content">
-            <h3>Edit Video Youtube</h3>
-            <div class="price">Mulai Rp 50.000</div>
-            <p>Potong, gabung, tambah transisi, teks, dan warna grading untuk video YouTube atau TikTok Anda.</p>
-            
-            <!-- GANTI NOMOR WA ANDA DI SINI -->
-            <!-- Format: https://wa.me/628xxxxxxxxx?text=Halo... -->
-            <a href="https://wa.me/6282125972304?text=Halo%20caca,%20saya%20mau%20pesan%20Jasa%20Edit%20Video" target="_blank" class="btn-wa">
-              <i class="fab fa-whatsapp"></i> Pesan Sekarang
-            </a>
-          </div>
-        </div>
-
-        <!-- Item 2: Desain Poster -->
-        <div class="service-card">
-          <div class="service-image">
-            <img src="image/j.jfif" alt="Desain Poster">
-          </div>
-          <div class="service-content">
-            <h3>Desain Poster</h3>
-            <div class="price">Mulai Rp 25.000</div>
-            <p>Desain poster event, promosi, atau media sosial dengan tampilan menarik dan eye-catching.</p>
-            
-            <a href="https://wa.me/6282125972304?text=Halo%20caca,%20saya%20mau%20pesan%20Jasa%20Desain%20Poster" target="_blank" class="btn-wa">
-              <i class="fab fa-whatsapp"></i> Pesan Sekarang
-            </a>
-          </div>
-        </div>
-
-        <!-- Item 3: Desain Logo -->
-        <div class="service-card">
-          <div class="service-image">
-            <img src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Desain Logo">
-          </div>
-          <div class="service-content">
-            <h3>Desain Logo</h3>
-            <div class="price">Mulai Rp 35.000</div>
-            <p>Pembuatan logo minimalis untuk brand, UMKM, atau komunitas Anda. Format lengkap (PNG, JPG, SVG).</p>
-            
-            <a href="https://wa.me/6282125972304?text=Halo%20caca,%20saya%20mau%20pesan%20Jasa%20Desain%20Logo" target="_blank" class="btn-wa">
-              <i class="fab fa-whatsapp"></i> Pesan Sekarang
-            </a>
-          </div>
-        </div>
-
-      </div>
+    <!-- KONTEN HALAMAN -->
+    <section class="dummy-content">
+        <p>Scroll ke bawah untuk melihat efek Sticky Navbar...</p>
     </section>
 
-    <!-- Script untuk Menu Mobile -->
+    <!-- SCRIPT UNTUK MENU MOBILE -->
     <script>
-      const mobileMenu = document.getElementById("mobile-menu");
-      const nav = document.querySelector("nav");
+        // Mengambil elemen berdasarkan ID
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
 
-      mobileMenu.addEventListener("click", () => {
-        nav.classList.toggle("active");
-      });
+        // Event Listener: Saat ikon menu diklik
+        menuIcon.onclick = () => {
+            // Toggle class 'active' pada navbar
+            navbar.classList.toggle('active');
+            
+            // Ubah ikon dari bars ke times (X) saat menu terbuka
+            if(navbar.classList.contains('active')){
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        };
+
+        // Menutup menu saat salah satu link diklik (UX yang baik)
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.onclick = () => {
+                navbar.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
     </script>
-  </body>
+
+</body>
 </html>
