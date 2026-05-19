@@ -149,6 +149,108 @@
             font-size: 2rem;
             color: #555;
         }
+  
+      .services {
+        padding: 10rem 9% 5rem;
+        min-height: 100vh;
+      }
+
+      .services h1 {
+        font-size: 4rem;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .services span {
+        color: #e3651d;
+      }
+
+      /* Grid Container untuk Katalog */
+      .catalog-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Desain Kartu Produk */
+      .service-card {
+        background-color: #252525; /* Warna sedikit terang dari background */
+        border-radius: 2rem;
+        overflow: hidden;
+        border: 1px solid #333;
+        transition: 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        border-color: #e3651d;
+        box-shadow: 0 0 15px rgba(227, 101, 29, 0.3);
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .service-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .service-content h3 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .service-content .price {
+        color: #e3651d;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .service-content p {
+        font-size: 1.4rem;
+        color: #ccc;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        flex-grow: 1; /* Agar tombol selalu di bawah */
+      }
+
+      /* Tombol Pesan WA */
+      .btn-wa {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #25D366; /* Warna Hijau WA */
+        color: white;
+        text-align: center;
+        border-radius: 2rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        transition: 0.3s ease;
+        text-decoration: none;
+        border: 2px solid #25D366;
+      }
+
+      .btn-wa:hover {
+        background-color: transparent;
+        color: #25D366;
+        transform: scale(1.05);
+      }
+
+      /* Responsive Mobile */
+      @media (max-width: 995px) {
+        .services h1 {
+          font-size: 3rem;
+        }
+      }
+    
+    
     </style>
 </head>
 <body>
